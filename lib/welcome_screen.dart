@@ -81,9 +81,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: buildButton(
-                text: 'Log In',
-                color: Colors.lightBlueAccent,
-                onPressed: () {
+                label: 'Log In',
+                bgColor: Colors.lightBlueAccent,
+                action: () {
                   Navigator.pushNamed(context, LoginScreen.id);
                 },
               ),
@@ -91,9 +91,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
               child: buildButton(
-                text: 'Register',
-                color: Colors.blueAccent,
-                onPressed: () {
+                label: 'Register',
+                bgColor: Colors.blueAccent,
+                action: () {
                   Navigator.pushNamed(context, RegistrationScreen.id);
                 },
               ),

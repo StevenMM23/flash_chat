@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flash_app/components/rounded_button.dart';
 import 'package:flutter/material.dart';
+
+import 'chat_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -26,6 +29,10 @@ InputDecoration textInputDecoration = const InputDecoration(
   ),
 );
 
+final _auth = FirebaseAuth.instance;
+var email;
+var password;
+
 class _LoginScreenScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
@@ -50,6 +57,9 @@ class _LoginScreenScreenState extends State<LoginScreen> {
               height: 48.0,
             ),
             TextField(
+              onChanged: (values){
+                email = values;
+              },
               keyboardType: TextInputType.emailAddress,
               decoration: textInputDecoration,
             ),
@@ -57,13 +67,30 @@ class _LoginScreenScreenState extends State<LoginScreen> {
               height: 10.0,
             ),
             TextField(
+              onChanged: (values){
+                password = values;
+              },
               decoration: textInputDecoration.copyWith(hintText: "Password"),
             ),
             const SizedBox(
               height: 20.0,
             ),
             buildButton(
-                text: 'Login', color: Colors.blue, onPressed: () => {}),
+                bgColor: Colors.lightBlueAccent,
+                label: 'Log In',
+                action: () {
+                  try {
+                    final newUser = _auth.signInWithEmailAndPassword(
+                        email: email, password: password);
+
+                    if (newUser != null){
+                      Navigator.pushNamed(context, ChatScreen.id);
+                    }
+                  } catch (err) {
+                    print(err);
+                  }
+                }),
+
           ],
         ),
       ),

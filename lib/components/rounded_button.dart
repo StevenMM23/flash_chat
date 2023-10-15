@@ -2,19 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget buildButton({
-  required String text,
-  required Color color,
-  required VoidCallback onPressed,
+  required String label,
+  required Color bgColor,
+  required VoidCallback action,
 }) {
   return Material(
     elevation: 5.0,
-    color: color,
+    color: bgColor,
     borderRadius: BorderRadius.circular(50),
     child: MaterialButton(
-      onPressed: onPressed,
+      onPressed: action,
       minWidth: 200.0,
       height: 50.0,
-      child: Text(text),
+      child: Text(label),
     ),
   );
 }

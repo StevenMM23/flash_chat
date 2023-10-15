@@ -78,7 +78,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 20.0,
             ),
             buildButton(
-                text: 'Register', color: Colors.blue, onPressed:  () async{
+                label: 'Register', bgColor: Colors.blue, action:  () async{
                   
                   //Implementar funcionamiento de inicio de sesion
               
